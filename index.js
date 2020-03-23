@@ -145,8 +145,8 @@ function getName(makePersonObject) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(stuff) {
+  return stuff.indexOf('apple');
 }
 
 /**
@@ -164,9 +164,23 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
-}
+function isItAnApple(arr) {
+  let trueFalse = [];
+  let i = 0;
+  for (i = 0; i<arr.length; i++){
+    if(arr[i] === 'apple'){
+      trueFalse.push(true);
+    }
+
+    else {
+      trueFalse.push(false);
+    }//else
+
+    
+  }//for
+
+  return trueFalse;
+}//end function
 
 
 
@@ -223,7 +237,8 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const makeModel = inventory[index];
+  return ('This is a '+makeModel.car_make+ ' '+makeModel.car_model);
 }
 
 /**
@@ -237,8 +252,10 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(arr) {
+  const index = arr.length - 1;
+  const make = arr[index]
+  return 'This is a '+ make.car_make+' '+ make.car_model;
 }
 
 /**
@@ -250,8 +267,13 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(inventory) {
+  let years = []
+  for(let i=0; i<inventory.length; i++){
+    let carYear = inventory[i];
+    years.push(carYear.car_year)
+  }//closes loop
+  return years;
 }
 
 /**
