@@ -290,8 +290,9 @@ function getModelYears(inventory) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, id) {
+  let make = inventory[id-1]
+  return 'This is a '+make.car_make+ " "+ make.car_model;
 }
 
 /**
@@ -308,8 +309,15 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, maxYear) {
+  let years = []
+  for(let i = 0; i<inventory.length; i++){
+    let carYear = inventory[i]
+    if (carYear.car_year <= maxYear){
+      years.push(carYear);
+    }
+  }//closes for
+  return years;
 }
 
 /**
@@ -325,8 +333,15 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  let german = [];
+  for(let i = 0; i<inventory.length; i++){
+    let make = inventory[i];
+    if(make.car_make === "Audi" ||  make.car_make === "Mercedes-Benz" || make.car_make === "Volkswagen" || make.car_make === "BMW") {
+      german.push(make);
+    }
+  }//for loop
+  return german;
 }
 
 /**
@@ -342,8 +357,16 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(odom) {
+  let car = {
+    odometer: odom,
+    drive: function(distance){
+      let update = this.odometer+distance;
+      this.odometer = update;
+      return this.odometer;
+    }//function
+  }
+  return car;
 }
 
 /// ////// END OF CHALLENGE /////////
